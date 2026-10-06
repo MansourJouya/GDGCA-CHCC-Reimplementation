@@ -1,0 +1,19 @@
+device: cuda | torch 2.5.1+cu121 | cuda available: True
+files in ./data\acm: ['feat_term.npy', 'features.npy', 'graph_coauthor.npz', 'graph_subject.npz', 'labels.npy']
+   view coauthor   edges=13374 density=0.00292
+   view subject    edges=1107032 density=0.24196
+   view union      edges=1112666 density=0.24319
+acm: N=3025 D=1902 K=3 graphs=['coauthor', 'subject', 'union']
+[sanity] KMeans on raw features: ACC=0.693 NMI=0.362
+   [diag] KMeans raw X            ACC=0.693
+   [diag] KMeans A^2 X (smoothed) ACC=0.638
+   [diag] KMeans AE-embedding (after stage 1) ACC=0.616
+   [sanity] GDGCA KMeans-on-fused-embedding ACC=0.687
+[GDGCA | union] ACC 0.6565±0.0156  NMI 0.4218±0.0254  ARI 0.3610±0.0342  F1 0.6676±0.0127
+   [sanity] CHCC KMeans-after-warmup ACC=0.706
+[CHCC | union] ACC 0.6549±0.0099  NMI 0.4183±0.0142  ARI 0.3591±0.0205  F1 0.6660±0.0082
+
+================ FINAL (ACM) ================
+Dataset | Method | view | ACC | NMI | ARI | F1
+ACM | GDGCA | union | 0.656 | 0.422 | 0.361 | 0.668
+ACM | CHCC | union | 0.655 | 0.418 | 0.359 | 0.666

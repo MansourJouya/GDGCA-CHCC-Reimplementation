@@ -1,0 +1,20 @@
+device: cuda | torch 2.5.1+cu121 | cuda available: True
+files in ./data\dblp: ['feat_term.npy', 'features.npy', 'graph_coauthor.npz', 'labels.npy']
+>> building kNN graph (k=10, cosine) from features
+   view coauthor   edges=3528 density=0.00043
+   view knn        edges=31137 density=0.00378
+   view union      edges=32880 density=0.00400
+dblp: N=4057 D=334 K=4 graphs=['coauthor', 'knn', 'union']
+[sanity] KMeans on raw features: ACC=0.565 NMI=0.248
+   [diag] KMeans raw X            ACC=0.565
+   [diag] KMeans A^2 X (smoothed) ACC=0.685
+   [diag] KMeans AE-embedding (after stage 1) ACC=0.294
+   [sanity] GDGCA KMeans-on-fused-embedding ACC=0.781
+[GDGCA | union] ACC 0.7995±0.0013  NMI 0.4876±0.0021  ARI 0.5460±0.0017  F1 0.7948±0.0017
+   [sanity] CHCC KMeans-after-warmup ACC=0.769
+[CHCC | union] ACC 0.7947±0.0029  NMI 0.4827±0.0025  ARI 0.5392±0.0055  F1 0.7895±0.0026
+
+================ FINAL (DBLP) ================
+Dataset | Method | view | ACC | NMI | ARI | F1
+DBLP | GDGCA | union | 0.799 | 0.488 | 0.546 | 0.795
+DBLP | CHCC | union | 0.795 | 0.483 | 0.539 | 0.789

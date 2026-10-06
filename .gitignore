@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+*.egg-info/
+# datasets are not redistributed
+data/*
+!data/README.md
+*.npy
+*.npz
+checkpoints/
+*.pt
