@@ -1,3 +1,7 @@
+> **⚠️ Archived.** This repository has been merged into
+> [MansourJouya/AGAMC](https://github.com/MansourJouya/AGAMC) (see the `baselines/` folder),
+> which is the maintained version. Please use that repository.
+> 
 <h1 align="center">GDGCA & CHCC — Re-implementations</h1>
 <h3 align="center">Reproducible re-implementations of two graph-clustering baselines<br>(GDGCA and CHCC) for ACM and DBLP</h3>
 
